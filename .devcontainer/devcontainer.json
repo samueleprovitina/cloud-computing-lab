@@ -1,0 +1,10 @@
+{
+  "name": "Il mio Lab",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "24" },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": { "moby": false }
+  },
+  "postCreateCommand": "docker --version && node --version",
+  "forwardPorts": [3000, 8080, 8888]
+}
