@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Il mio programma JavaScript</h1>
+<input type="text" id="inputNome" value="samuele">
+<input type="text" id="inputCognome" value="provitina">
+<input type="color" id="inputColore" value="#8b4513">
+<button onclick="aggiornaTesto()">Stampa e colora</button>
+<p id="nome">Inizia a scrivere...</p>
+
+<script>
+function aggiornaTesto() {
+  const nomeInserito = document.getElementById("inputNome").value;
+  const cognomeInserito = document.getElementById("inputCognome").value;
+  const elemento = document.getElementById("inputColore").value;
+  document.getElementById("nome").textContent = nomeInserito + " " + cognomeInserito;
+  document.getElementById("nome").style.color = elemento;
+}
+</script>
+
+</body>
+</html>
