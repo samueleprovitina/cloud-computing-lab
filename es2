@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Calcolo IP</title>
+</head>
+<body>
+
+<h1>Calcolatore IP e Subnet Mask</h1>
+
+<h2>Inserisci l'indirizzo IP</h2>
+
+<input id="ip1" value="192" size="3"> .
+<input id="ip2" value="168" size="3"> .
+<input id="ip3" value="1" size="3"> .
+<input id="ip4" value="10" size="3">
+
+<h2>Prefix Length</h2>
+<input id="prefix" value="24" size="3">
+
+<br><br>
+<button onclick="calcola()">Calcola</button>
+
+<p id="errore" style="color:red"></p>
+
+<h2>Risultati</h2>
+
+<p>IP decimale: <span id="ip"></span></p>
+<p>IP binario: <span id="binario"></span></p>
+<p>Subnet mask: <span id="mask"></span></p>
+<p>Indirizzo di rete: <span id="rete"></span></p>
+<p>Broadcast: <span id="broadcast"></span></p>
+<p>Indirizzi totali: <span id="totale"></span></p>
+<p>Host utilizzabili: <span id="host"></span></p>
+
+<script>
+function calcola() {
+    let a = Number(document.getElementById("ip1").value);
+    let b = Number(document.getElementById("ip2").value);
+    let c = Number(document.getElementById("ip3").value);
+    let d = Number(document.getElementById("ip4").value);
+    let pl = Number(document.getElementById("prefix").value);
+
+    if (a < 0 || a > 255 || b < 0 || b > 255 ||
+        c < 0 || c > 255 || d < 0 || d > 255 ||
+        !Number.isInteger(a) || !Number.isInteger(b) ||
+        !Number.isInteger(c) || !Number.isInteger(d) ||
+        !Number.isInteger(pl) || pl < 0 || pl > 32 ||
+        document.getElementById("ip1").value == "" ||
+        document.getElementById("ip2").value == "" ||
+        document.getElementById("ip3").value == "" ||
+        document.getElementById("ip4").value == "" ||
+        document.getElementById("prefix").value == "") {
+        document.getElementById("errore").innerHTML =
+            "Inserisci valori validi!";
+        return;
+    }
+
+    document.getElementById("errore").innerHTML = "";
+
+    let ip = a + "." + b + "." + c + "." + d;
+    document.getElementById("ip").innerHTML = ip;
+
+    let bin = "";
+    let numeri = [a, b, c, d];
+
+    for (let i = 0; i < 4; i++) {
+        let numero = numeri[i].toString(2);
+
+        while (numero.length < 8) {
+            numero = "0" + numero;
+        }
+
+        bin = bin + numero;
+
+        if (i < 3) {
+            bin = bin + ".";
+        }
+    }
+
+    document.getElementById("binario").innerHTML = bin;
+
+    let mask = [0, 0, 0, 0];
+    let bit = pl;
+
+    for (let i = 0; i < 4; i++) {
+        if (bit >= 8) {
+            mask[i] = 255;
+            bit = bit - 8;
+        } else if (bit > 0) {
+            mask[i] = 256 - Math.pow(2, 8 - bit);
+            bit = 0;
+        }
+    }
+
+    document.getElementById("mask").innerHTML = mask.join(".");
+
+    let ipNumero = a * 16777216 + b * 65536 + c * 256 + d;
+    let tot = Math.pow(2, 32 - pl);
+    let reteNumero = Math.floor(ipNumero / tot) * tot;
+    let broadcastNumero = reteNumero + tot - 1;
+
+    function converti(numero) {
+        let x = Math.floor(numero / 16777216);
+        let y = Math.floor(numero / 65536) % 256;
+        let z = Math.floor(numero / 256) % 256;
+        let w = numero % 256;
+
+        return x + "." + y + "." + z + "." + w;
+    }
+
+    document.getElementById("rete").innerHTML = converti(reteNumero);
+    document.getElementById("broadcast").innerHTML = converti(broadcastNumero);
+    document.getElementById("totale").innerHTML = tot;
+
+    if (pl == 32) {
+        document.getElementById("host").innerHTML = 1;
+    } else if (pl == 31) {
+        document.getElementById("host").innerHTML = 2;
+    } else {
+        document.getElementById("host").innerHTML = tot - 2;
+    }
+}
+</script>
+
+</body>
+</html>
