@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Maschera di Inserimento Dati</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; line-height: 1.5; }
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 140px; vertical-align: top; font-weight: bold; }
+        input[type="text"], input[type="number"], select, textarea { width: 250px; padding: 6px; }
+        .radio-check-group { display: inline-block; width: calc(100% - 150px); }
+        .radio-check-group label { width: auto; font-weight: normal; margin-right: 15px; cursor: pointer; }
+        
+        table { border-collapse: collapse; width: 100%; margin-top: 30px; display: none; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; width: 35%; }
+        
+        button { padding: 8px 16px; font-size: 15px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <h2>Inserimento Dati Utente</h2>
+    <form id="dataForm">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="eta">Età:</label>
+            <input type="number" id="eta" name="eta" min="1" max="120" required>
+        </div>  
+        <div class="form-group">
+            <label>Sesso:</label>
+            <div class="radio-check-group">
+                <input type="radio" id="sessoM" name="sesso" value="Maschio" required> <label for="sessoM">Maschio</label>
+                <input type="radio" id="sessoF" name="sesso" value="Femmina"> <label for="sessoF">Femmina</label>
+                <input type="radio" id="sessoND" name="sesso" value="Non specificato"> <label for="sessoND">Altro / Non specificato</label>
+            </div>
+        </div>      
+        <div class="form-group">
+            <label for="indirizzo">Indirizzo:</label>
+            <input type="text" id="indirizzo" name="indirizzo" required>
+        </div>
+        <div class="form-group">
+            <label for="citta">Città:</label>
+            <input type="text" id="citta" name="citta" required>
+        </div>
+        <div class="form-group">
+            <label for="provincia">Provincia:</label>
+            <select id="provincia" name="provincia" required>
+                <option value="">-- Seleziona Provincia --</option>
+                <option value="AG">Agrigento (AG)</option>
+                <option value="AL">Alessandria (AL)</option>
+                <option value="AN">Ancona (AN)</option>
+                <option value="AO">Aosta (AO)</option>
+                <option value="AR">Arezzo (AR)</option>
+                <option value="AP">Ascoli Piceno (AP)</option>
+                <option value="AT">Asti (AT)</option>
+                <option value="AV">Avellino (AV)</option>
+                <option value="BA">Bari (BA)</option>
+                <option value="BT">Barletta-Andria-Trani (BT)</option>
+                <option value="BL">Belluno (BL)</option>
+                <option value="BN">Benevento (BN)</option>
+                <option value="BG">Bergamo (BG)</option>
+                <option value="BI">Biella (BI)</option>
+                <option value="BO">Bologna (BO)</option>
+                <option value="BZ">Bolzano (BZ)</option>
+                <option value="BS">Brescia (BS)</option>
+                <option value="BR">Brindisi (BR)</option>
+                <option value="CA">Cagliari (CA)</option>
+                <option value="CL">Caltanissetta (CL)</option>
+                <option value="CB">Campobasso (CB)</option>
+                <option value="CE">Caserta (CE)</option>
+                <option value="CT">Catania (CT)</option>
+                <option value="CZ">Catanzaro (CZ)</option>
+                <option value="CH">Chieti (CH)</option>
+                <option value="CO">Como (CO)</option>
+                <option value="CS">Cosenza (CS)</option>
+                <option value="CR">Cremona (CR)</option>
+                <option value="KR">Crotone (KR)</option>
+                <option value="CN">Cuneo (CN)</option>
+                <option value="EN">Enna (EN)</option>
+                <option value="FM">Fermo (FM)</option>
+                <option value="FE">Ferrara (FE)</option>
+                <option value="FI">Firenze (FI)</option>
+                <option value="FG">Foggia (FG)</option>
+                <option value="FC">Forlì-Cesena (FC)</option>
+                <option value="FR">Frosinone (FR)</option>
+                <option value="GE">Genova (GE)</option>
+                <option value="GO">Gorizia (GO)</option>
+                <option value="GR">Grosseto (GR)</option>
+                <option value="IM">Imperia (IM)</option>
+                <option value="IS">Isernia (IS)</option>
+                <option value="SP">La Spezia (SP)</option>
+                <option value="AQ">L'Aquila (AQ)</option>
+                <option value="LT">Latina (LT)</option>
+                <option value="LE">Lecce (LE)</option>
+                <option value="LC">Lecco (LC)</option>
+                <option value="LI">Livorno (LI)</option>
+                <option value="LO">Lodi (LO)</option>
+                <option value="LU">Lucca (LU)</option>
+                <option value="MC">Macerata (MC)</option>
+                <option value="MN">Mantova (MN)</option>
+                <option value="MS">Massa-Carrara (MS)</option>
+                <option value="MT">Matera (MT)</option>
+                <option value="ME">Messina (ME)</option>
+                <option value="MI">Milano (MI)</option>
+                <option value="MO">Modena (MO)</option>
+                <option value="MB">Monza e della Brianza (MB)</option>
+                <option value="NA">Napoli (NA)</option>
+                <option value="NO">Novara (NO)</option>
+                <option value="NU">Nuoro (NU)</option>
+                <option value="OR">Oristano (OR)</option>
+                <option value="PD">Padova (PD)</option>
+                <option value="PA">Palermo (PA)</option>
+                <option value="PR">Parma (PR)</option>
+                <option value="PV">Pavia (PV)</option>
+                <option value="PG">Perugia (PG)</option>
+                <option value="PU">Pesaro e Urbino (PU)</option>
+                <option value="PE">Pescara (PE)</option>
+                <option value="PC">Piacenza (PC)</option>
+                <option value="PI">Pisa (PI)</option>
+                <option value="PT">Pistoia (PT)</option>
+                <option value="PN">Pordenone (PN)</option>
+                <option value="PZ">Potenza (PZ)</option>
+                <option value="PO">Prato (PO)</option>
+                <option value="RG">Ragusa (RG)</option>
+                <option value="RA">Ravenna (RA)</option>
+                <option value="RC">Reggio Calabria (RC)</option>
+                <option value="RE">Reggio Emilia (RE)</option>
+                <option value="RI">Rieti (RI)</option>
+                <option value="RN">Rimini (RN)</option>
+                <option value="RM">Roma (RM)</option>
+                <option value="RO">Rovigo (RO)</option>
+                <option value="SA">Salerno (SA)</option>
+                <option value="SS">Sassari (SS)</option>
+                <option value="SV">Savona (SV)</option>
+                <option value="SI">Siena (SI)</option>
+                <option value="SR">Siracusa (SR)</option>
+                <option value="SO">Sondrio (SO)</option>
+                <option value="SU">Sud Sardegna (SU)</option>
+                <option value="TA">Taranto (TA)</option>
+                <option value="TE">Teramo (TE)</option>
+                <option value="TR">Terni (TR)</option>
+                <option value="TO">Torino (TO)</option>
+                <option value="TP">Trapani (TP)</option>
+                <option value="TN">Trento (TN)</option>
+                <option value="TV">Treviso (TV)</option>
+                <option value="TS">Trieste (TS)</option>
+                <option value="UD">Udine (UD)</option>
+                <option value="VA">Varese (VA)</option>
+                <option value="VE">Venezia (VE)</option>
+                <option value="VB">Verbano-Cusio-Ossola (VB)</option>
+                <option value="VC">Vercelli (VC)</option>
+                <option value="VR">Verona (VR)</option>
+                <option value="VV">Vibo Valentia (VV)</option>
+                <option value="VI">Vicenza (VI)</option>
+                <option value="VT">Viterbo (VT)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Sport Praticati:</label>
+            <div class="radio-check-group">
+                <input type="checkbox" id="sport1" name="sport" value="Calcio"> <label for="sport1">Calcio</label>
+                <input type="checkbox" id="sport2" name="sport" value="Basket"> <label for="sport2">Basket</label>
+                <input type="checkbox" id="sport3" name="sport" value="Tennis"> <label for="sport3">Tennis</label>
+                <input type="checkbox" id="sport4" name="sport" value="Nuoto"> <label for="sport4">Nuoto</label>
+                <input type="checkbox" id="sport5" name="sport" value="Pallavolo"> <label for="sport5">Pallavolo</label>
+                <input type="checkbox" id="sport6" name="sport" value="Atletica"> <label for="sport6">Atletica</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="commenti">Commenti:</label>
+            <textarea id="commenti" name="commenti" rows="4" placeholder="Inserisci eventuali note..."></textarea>
+        </div>
+        
+        <button type="submit">Genera Tabella</button>
+    </form>
+    <table id="tabellaRisultati">
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th>Dato Inserito</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabella">
+        </tbody>
+    </table>
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const nome = document.getElementById('nome').value;
+            const cognome = document.getElementById('cognome').value;
+            const eta = document.getElementById('eta').value;
+            const sessoChecked = document.querySelector('input[name="sesso"]:checked');
+            const sesso = sessoChecked ? sessoChecked.value : 'Non specificato';
+            const indirizzo = document.getElementById('indirizzo').value;
+            const citta = document.getElementById('citta').value;
+            const provincia = document.getElementById('provincia').value;
+            const commenti = document.getElementById('commenti').value || 'Nessun commento';
+            const sportSelezionati = document.querySelectorAll('input[name="sport"]:checked');
+            let sport = [];
+            sportSelezionati.forEach((checkbox) => {
+                sport.push(checkbox.value);
+            });
+            const sportStr = sport.length > 0 ? sport.join(', ') : 'Nessuno sport selezionato';
+            const dati = [
+                { etichetta: 'Nome', valore: nome },
+                { etichetta: 'Cognome', valore: cognome },
+                { etichetta: 'Età', valore: eta },
+                { etichetta: 'Sesso', valore: sesso },
+                { etichetta: 'Indirizzo', valore: indirizzo },
+                { etichetta: 'Città', valore: citta },
+                { etichetta: 'Provincia', valore: provincia },
+                { etichetta: 'Sport Praticati', valore: sportStr },
+                { etichetta: 'Commenti', valore: commenti }
+            ];
+            const corpoTabella = document.getElementById('corpoTabella');
+            corpoTabella.innerHTML = ''; 
+            dati.forEach(elemento => {
+                const tr = document.createElement('tr');
+                const tdEtichetta = document.createElement('td');
+                tdEtichetta.textContent = elemento.etichetta;
+                tdEtichetta.style.fontWeight = 'bold';
+ 
+                const tdValore = document.createElement('td');
+                tdValore.textContent = elemento.valore;
+
+                tr.appendChild(tdEtichetta);
+                tr.appendChild(tdValore);
+                corpoTabella.appendChild(tr);
+            });
+            document.getElementById('tabellaRisultati').style.display = 'table';
+        });
+    </script>
+</body>
+</html>
