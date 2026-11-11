@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <input type="text" id="binario" placeholder="Inserisci stringa binaria">
+
+  <button onclick="converti()">Converti</button>
+
+  <p id="risultato"></p>
+
+  <script>
+    function converti() {
+      let binario = document.getElementById("binario").value;
+
+      let esadecimale = parseInt(binario, 2).toString(16);
+
+      document.getElementById("risultato").innerHTML = esadecimale;
+    }
+  </script>
+
+</body>
+</html>
